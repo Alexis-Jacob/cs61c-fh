@@ -1,6 +1,6 @@
 CS 61C Homework 1
 Name: Alexis Jacob
-Login: jacob_alexis
+Login: fh
 
 
 Problem 1
@@ -60,6 +60,6 @@ b. 128 * 2 ^ 70 / 512 * 2 ^ 40 = 151115727451828646838272 / 562949953421312 = 26
 
 c. 4^16 = 4 Gi
 
-d. 4^42 = 
+d. 4^42 = 16 Yi
 
-e.2^(8*8) = Ei
+e.2^(8*8) = 16 Ei
