@@ -1,7 +1,7 @@
 /* 
  * CS61C Summer 2014
  * Name: Alexis Jacob
- * Login: jacob_alexis
+ * Login: fh
  */
 
 #include <stdio.h>

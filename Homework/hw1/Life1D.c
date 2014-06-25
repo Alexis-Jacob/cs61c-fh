@@ -1,18 +1,20 @@
 /* 
  * CS61C Summer 2014
- * Name:
- * Login:
+ * Name: Alexis Jacob
+ * Login: fh
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
+/* Macro */
 #define IS_ONE(x, y) (0 != (x & (1u<<y)))
+
 /* Function declarations. You may declare additional functions here. */
 void usage(void);
-void init_first_row(char* row, int rows);
-void set_next_level(char *current_level, char *next_level, int rows, unsigned int rule);
+void init_first_row(char* row);//, int rows);
+void set_next_level(char *current_level, char *next_level);//, int rows, unsigned int rule);
 
 /* Global variables. rows is the number of successive generations (after
  * the initial) you will create and print. rule is a 32-bit integer specifying
@@ -53,13 +55,13 @@ int main(int argc,char *argv[]) {
 
   /* You must now generate and print the initial generation and each successive generation. */
 
-  init_first_row(rowA, rows);
+  init_first_row(rowA);//, rows);
   for (unsigned int j = 0; j < rows; j++)
     {
       if (j%2)
-	set_next_level(rowB, rowA, rows, rule);
+	set_next_level(rowB, rowA);//, rows, rule);
       else
-	set_next_level(rowA, rowB, rows, rule);
+	set_next_level(rowA, rowB);//, rows, rule);
       if (j + 1 < rows)
 	printf("\n");
     }
@@ -69,17 +71,17 @@ int main(int argc,char *argv[]) {
   return 0;
 }
 
-void	set_next_level(char *current_level, char *next_level, int rows, unsigned int rule)
+void	set_next_level(char *current_level, char *next_level)//, int rows, unsigned int rule)
 {
   int	val;
 
-  for (int i = 0; i < (2 * rows) + 1;++i)
+  for (unsigned int i = 0; i < (2 * rows) + 1;++i)
     {
       val = 0;
-      for (int j = i - 2; j <= i + 2; j++)
+      for (int j = i - 2; j <= (int)i + 2; j++)
 	{
 	  val = val << 1;
-	  if (j >= 0 && j < ((rows) * 2 + 1) && current_level[j] == 1)
+	  if (j >= 0 && (unsigned int)j < ((rows) * 2 + 1) && current_level[j] == 1)
 	    val |= 1;
 	}
       next_level[i] = IS_ONE(rule, val);
@@ -89,9 +91,9 @@ void	set_next_level(char *current_level, char *next_level, int rows, unsigned in
     }
 }
 
-void	init_first_row(char* row, int rows)
+void	init_first_row(char* row)//, int rows)
 {
-  for (int i = 0;i < (2*rows) + 1;++i)
+  for (unsigned int i = 0;i < (2*rows) + 1;++i)
     {
       row[i] = i == rows ? 1 : 0;
       printf("%i%s", row[i], (i + 1 == (2 * rows) + 1 ? "" : " "));
